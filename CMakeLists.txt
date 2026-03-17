@@ -13,10 +13,10 @@ message(STATUS "C++ Standard: ${CMAKE_CXX_STANDARD}")
 # TODO: Get rid of GLOB and switch to add_executable
 file(GLOB SRC_FILES src/*.cpp src/*.c external/*/*.c)
 
-add_executable(bin ${SRC_FILES})
+add_executable(libretro ${SRC_FILES})
 
 # Include directories - add external/glad and external/KHR separately
-target_include_directories(bin PRIVATE 
+target_include_directories(libretro PRIVATE 
     include 
     external
 )
@@ -25,14 +25,14 @@ target_include_directories(bin PRIVATE
 find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
 
-target_link_libraries(bin PRIVATE
+target_link_libraries(libretro PRIVATE
     glfw
     OpenGL::GL
     ${CMAKE_DL_LIBS}  # Required for GLAD on Linux
 )
 
 # Use target_compile_definitions instead of add_definitions
-target_compile_definitions(bin PRIVATE 
+target_compile_definitions(libretro PRIVATE 
     GL_SILENCE_DEPRECATION 
     GLFW_INCLUDE_NONE
 )
