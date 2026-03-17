@@ -84,7 +84,7 @@ private:
   GLFWwindow *window_{};
   size_t width_{};
   size_t height_{};
-  std::string title_;
+  std::string title_{};
   NoExceptFunctor<void()> render_cb_{};
   NoExceptFunctor<void()> cleanup_cb_{};
 
